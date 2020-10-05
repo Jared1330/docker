@@ -1,1 +1,12 @@
-test
+docker images
+docker ps -a
+
+docker build -t test .
+
+docker run -it -p 8888:8080 nginx:latest
+docker run -d -p 8888:80 nginx:latest
+
+docker exec -it 5267e21d140 /bin/bash
+
+docker rm -f $(docker ps -aq)        
+docker rmi -f $(docker images -q)  
