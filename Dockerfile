@@ -10,11 +10,7 @@ RUN mkdir ~/.aws && \
     touch ~/.aws/credentials && \
     echo [default] $'\n' region = us-east-1 > ~/.aws/config &&\
     echo [default] $'\n' aws_access_key_id = $JENKINS_AWS_ACCESS_KEY_ID $'\n' aws_secret_access_key = $JENKINS_AWS_SECRET_ACCESS_KEY > ~/.aws/credentials
-    
-    
-    
-    
-    
+        
 FROM — задаёт базовый (родительский) образ.
 LABEL — описывает метаданные. Например — сведения о том, кто создал и поддерживает образ.
 ENV — устанавливает постоянные переменные среды.
