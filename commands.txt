@@ -1,20 +1,25 @@
-docker images
-docker ps -a
+sudo systemctl status docker
 
-docker build -t test .
+docker images # check images
 
-docker run -it -p 8888:8080 nginx:latest
-docker run -d -p 8888:80 nginx:latest
+docker ps # check all containers
+docker ps -a  # check running containers
 
-docker exec -it 5267e21d140 /bin/bash
 
-docker rm -f $(docker ps -aq)        
-docker rmi -f $(docker images -q)  
+docker build -t test .   # created image from Dockerfile
+
+docker run -it -p 8888:8080 nginx:latest # -p (перенаправление портов, где я хочу:куда по факту приходит) -it (интерактиво)
+docker run -d -p 8888:80 nginx:latest # -d (Detached mode - run container in the background, print new container id)
+
+docker exec -it 5267e21d140 /bin/bash  # login to container
+
+docker rm -f $(docker ps -aq)        # remove all container
+docker rmi -f $(docker images -q)    # remove all images
 
 sudo docker run -d -p 8888:80 nginx
 docker exec -it 5267e21d140 /bin/bash
 
 
-Jenkins: 
+Jenkins:  
 sudo docker build --build-arg JENKINS_AWS_ACCESS_KEY_ID=$JENKINS_AWS_ACCESS_KEY_ID --build-arg JENKINS_AWS_SECRET_ACCESS_KEY=$JENKINS_AWS_SECRET_ACCESS_KEY -t test . --no-cache
 sudo docker run --rm -d -p 8081:8080 test:latest
