@@ -10,16 +10,18 @@ docker build -t test .   # created image from Dockerfile
 
 docker run -it -p 8888:8080 nginx:latest # -p (перенаправление портов, где я хочу:куда по факту приходит) -it (интерактиво)
 docker run -d -p 8888:80 nginx:latest # -d (Detached mode - run container in the background, print new container id)
+docker run -d -p 8888:80 -e TZ=Europe/Kyiv nginx # (-e define ENV VAR inside of docker)
 
 docker exec -it 5267e21d140 /bin/bash  # login to container
 
 docker rm -f $(docker ps -aq)        # remove all container
 docker rmi -f $(docker images -q)    # remove all images
 
-sudo docker run -d -p 8888:80 nginx
-docker exec -it 5267e21d140 /bin/bash
-
-
 Jenkins:  
-sudo docker build --build-arg JENKINS_AWS_ACCESS_KEY_ID=$JENKINS_AWS_ACCESS_KEY_ID --build-arg JENKINS_AWS_SECRET_ACCESS_KEY=$JENKINS_AWS_SECRET_ACCESS_KEY -t test . --no-cache
-sudo docker run --rm -d -p 8081:8080 test:latest
+docker build --build-arg JENKINS_AWS_ACCESS_KEY_ID=$JENKINS_AWS_ACCESS_KEY_ID --build-arg JENKINS_AWS_SECRET_ACCESS_KEY=$JENKINS_AWS_SECRET_ACCESS_KEY -t test . --no-cache
+docker run --rm -d -p 8081:8080 test:latest
+
+Use Volume: 
+docker volume ls
+docker volume create web
+docker run --rm -p 8080:8080 -v web:/etc/folder -e TZ=Europe/Kyiv web-hello
