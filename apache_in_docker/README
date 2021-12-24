@@ -4,3 +4,15 @@ How to create step by step (Just Build image and create container):
 2. docker build -t apache_in_docker .
 3. docker run -d -p 4444:80 apache_in_docker
 4. Open URL:4444
+
+
+Or using docker-compose: 
+1. git clone this repo
+2. Create file docker-compose.yml: 
+version: "3"
+services:
+  apache_in_docker:
+    build: .
+    ports: 
+      - "4444:80"
+3. docker-compose up
