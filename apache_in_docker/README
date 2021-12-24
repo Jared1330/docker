@@ -9,10 +9,10 @@ How to create step by step (Just Build image and create container):
 Or using docker-compose: 
 1. git clone this repo
 2. Create file docker-compose.yml: 
-version: "3"
+version: "3.3"
 services:
   apache_in_docker:
     build: .
     ports: 
       - "4444:80"
-3. docker-compose up
+3. docker-compose up -d
