@@ -14,8 +14,8 @@ docker run -d -p 8888:80 -e TZ=Europe/Kyiv nginx # (-e define ENV VAR inside of 
 
 docker exec -it 5267e21d140 /bin/bash  # login to container
 
-docker rm -f $(docker ps -aq)        # remove all container
-docker rmi -f $(docker images -q)    # remove all images
+sudo docker rm -f $(sudo docker ps -aq)        # remove all container
+sudo docker rmi -f $(sudo docker images -q)    # remove all images
 
 Jenkins:  
 docker build --build-arg JENKINS_AWS_ACCESS_KEY_ID=$JENKINS_AWS_ACCESS_KEY_ID --build-arg JENKINS_AWS_SECRET_ACCESS_KEY=$JENKINS_AWS_SECRET_ACCESS_KEY -t test . --no-cache
