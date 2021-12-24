@@ -1,0 +1,5 @@
+How to create step by step (Just Build image and create container): 
+
+1. git clone this repo
+2. docker build -t apache_in_docker .
+3. sudo docker run -d -p 4444:80 apache_in_docker
