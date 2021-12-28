@@ -8,7 +8,7 @@ How to run step-by-step:
 
 0. Make sure that ports 8080 and 8081 are opened.  
 1. Git clone this repo
-2. cd /wordpress-compose
+2. cd docker/wordpress-compose/
 3. Create folders: mkdir log && mkdir log/nginx && mkdir data && mkdir data/html &&  mkdir data/mysql
 4. Update passwords in docker-compose.yml file
 5. docker-compose up -d
