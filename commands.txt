@@ -46,3 +46,6 @@ docker-compose up -d
 docker-compose ps
 docker-compose logs [IMAGE_NAME]
 docker-compose down
+
+====== DIND ======
+docker run --privileged -d --name dind-test docker:dind
