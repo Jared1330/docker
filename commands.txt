@@ -1,29 +1,38 @@
+====== Install =======
+
 sudo systemctl status docker
 
+====== Images ======
 docker images # check images
+docker build -t test .  --no-cache # created image from Dockerfile not using cashe
+docker rmi # remove image
+docker rmi -f $(docker images -q)    # remove all images
 
+
+====== Containers ======
 docker ps # check all containers
 docker ps -a  # check running containers
-
-
-docker build -t test .   # created image from Dockerfile
-
 docker run -it -p 8888:8080 nginx:latest # -p (перенаправление портов, где я хочу:куда по факту приходит) -it (интерактиво)
 docker run -d -p 8888:80 nginx:latest # -d (Detached mode - run container in the background, print new container id)
-docker run -d -p 8888:80 -e TZ=Europe/Kyiv nginx # (-e define ENV VAR inside of docker)
-
-docker log 
-
+docker logs # check logs 
 docker exec -it 5267e21d140 /bin/bash  # login to container
+docker rm  # remove contaier 
+docker rm -f $(docker ps -aq)        # remove all container
 
-sudo docker rm -f $(sudo docker ps -aq)        # remove all container
-sudo docker rmi -f $(sudo docker images -q)    # remove all images
 
-Jenkins:  
-docker build --build-arg JENKINS_AWS_ACCESS_KEY_ID=$JENKINS_AWS_ACCESS_KEY_ID --build-arg JENKINS_AWS_SECRET_ACCESS_KEY=$JENKINS_AWS_SECRET_ACCESS_KEY -t test . --no-cache
-docker run --rm -d -p 8081:8080 test:latest
-
-Use Volume: 
+===== Volume ===== 
 docker volume ls
 docker volume create web
-docker run --rm -p 8080:8080 -v web:/etc/folder -e TZ=Europe/Kyiv web-hello
+
+===== Network =====
+docker network ls
+docker network create -d bridge network-name # create network with name network-name
+docker network rm network-name   # remove network with name network-name
+docker run [OPTIONS] --network=network-name [CONTAINER_ID] # run container in network
+docker network connect network-name [CONTAINER_ID] # add container to network
+docker network disconnect network-name [CONTAINER_ID] # remove container to network
+docker network inspect network-name # check network details
+
+===== Docker Compose ====
+docker compose-up
+docker compose-down
