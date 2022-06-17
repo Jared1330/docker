@@ -12,6 +12,8 @@ docker run -it -p 8888:8080 nginx:latest # -p (перенаправление п
 docker run -d -p 8888:80 nginx:latest # -d (Detached mode - run container in the background, print new container id)
 docker run -d -p 8888:80 -e TZ=Europe/Kyiv nginx # (-e define ENV VAR inside of docker)
 
+docker log 
+
 docker exec -it 5267e21d140 /bin/bash  # login to container
 
 sudo docker rm -f $(sudo docker ps -aq)        # remove all container
