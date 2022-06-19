@@ -15,3 +15,6 @@ sudo usermod -aG docker $USER
 
 ======= 3 ========
 Dockerfile. Docker build. Docker image. 
+
+======= 4 ========
+Dockerfile продовження.
