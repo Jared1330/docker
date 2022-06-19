@@ -10,5 +10,8 @@ Workfolow Docker
 DockerFile ==> Docker Build ==> Image ==> Docker run ==> Container
 
 ======= 2 =======
-Установка
+Установка Docker
 sudo usermod -aG docker $USER
+
+======= 3 ========
+Dockerfile. Docker build. Docker image. 
