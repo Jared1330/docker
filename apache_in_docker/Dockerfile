@@ -1,10 +1,9 @@
-FROM centos:latest
+FROM ubuntu
 
-RUN yum update -y && \
-    yum -y install httpd
+RUN apt-get -y  update
 
-COPY index.html /var/www/html/
-
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+RUN apt-get -y install apache2
 
 EXPOSE 80
+
+CMD ["/etc/init.d/apache2" ,"start", "-D",  "FOREGROUND"]
