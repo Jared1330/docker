@@ -24,3 +24,6 @@ Docker Registry. Push image to ECR.
 
 ======= 6 ========
 Docker containers
+
+======= 7 =======
+Docker volume
