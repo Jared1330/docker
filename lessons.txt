@@ -21,3 +21,6 @@ Dockerfile продовження.
 
 ======= 5 ========
 Docker Registry. Push image to ECR.
+
+======= 6 ========
+Docker containers
