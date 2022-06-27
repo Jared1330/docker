@@ -32,6 +32,13 @@ docker volume rm test
 docker volume prune # remove all unused volumes
 
 ===== Network =====
+Типы:
+bridge - изолированная сеть между контейнерами (сеть по умолчанию)
+host - удаление изоляции контейнера, работа на прямую с хостовой машиной
+overlay - позволяет соединять контейнеры на разных хост машинах (используется при построение кластера Docker swarm / Kuber)
+macvlan - уникальный mac адрес для контейнера в этом типе сети хост Docker принимает запросы на несколько MAC-адресов по одному IP-адресу и направляет эти запросы в соответствующий контейнер
+null - без сети
+
 docker network ls
 docker network create -d bridge network-name # create network with name network-name
 docker network rm network-name   # remove network with name network-name
